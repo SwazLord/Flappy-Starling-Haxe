@@ -35,7 +35,7 @@ class ApplicationMain
 		ManifestResources.init(config);
 		#end
 
-		app.meta["build"] = "207";
+		app.meta["build"] = "1";
 		app.meta["company"] = "Gamua";
 		app.meta["file"] = "flappy-starling";
 		app.meta["name"] = "Flappy Starling";
@@ -59,7 +59,7 @@ class ApplicationMain
 			maximized: false,
 			minimized: false,
 			parameters: {},
-			resizable: false,
+			resizable: true,
 			title: "Flappy Starling",
 			width: 320,
 			x: null,
@@ -183,7 +183,7 @@ class ApplicationMain
 	{
 		var hasMain = false;
 
-		switch (Context.follow(Context.getType("FlappyStarlingMobile")))
+		switch (Context.follow(Context.getType("FlappyStarlingWeb")))
 		{
 			case TInst(t, params):
 
@@ -199,7 +199,7 @@ class ApplicationMain
 
 				if (hasMain)
 				{
-					return Context.parse("@:privateAccess FlappyStarlingMobile.main()", Context.currentPos());
+					return Context.parse("@:privateAccess FlappyStarlingWeb.main()", Context.currentPos());
 				}
 				else if (type.constructor != null)
 				{
@@ -218,12 +218,12 @@ class ApplicationMain
 				}
 				else
 				{
-					Context.fatalError("Main class \"FlappyStarlingMobile\" has neither a static main nor a constructor.", Context.currentPos());
+					Context.fatalError("Main class \"FlappyStarlingWeb\" has neither a static main nor a constructor.", Context.currentPos());
 				}
 
 			default:
 
-				Context.fatalError("Main class \"FlappyStarlingMobile\" isn't a class.", Context.currentPos());
+				Context.fatalError("Main class \"FlappyStarlingWeb\" isn't a class.", Context.currentPos());
 		}
 
 		return null;
@@ -285,7 +285,7 @@ class ApplicationMain
 
 #if !macro
 @:build(DocumentClass.build())
-@:keep @:dox(hide) class DocumentClass extends FlappyStarlingMobile {}
+@:keep @:dox(hide) class DocumentClass extends FlappyStarlingWeb {}
 #else
 class DocumentClass
 {

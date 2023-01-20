@@ -914,13 +914,13 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "206";
+	app.meta.h["build"] = "1";
 	app.meta.h["company"] = "Gamua";
 	app.meta.h["file"] = "flappy-starling";
 	app.meta.h["name"] = "Flappy Starling";
 	app.meta.h["packageName"] = "com.gamua.flappy-starling";
 	app.meta.h["version"] = "1.0.0";
-	var attributes = { allowHighDPI : true, alwaysOnTop : false, borderless : false, element : null, frameRate : 60, height : 480, hidden : false, maximized : false, minimized : false, parameters : { }, resizable : false, title : "Flappy Starling", width : 320, x : null, y : null};
+	var attributes = { allowHighDPI : true, alwaysOnTop : false, borderless : false, element : null, frameRate : 60, height : 480, hidden : false, maximized : false, minimized : false, parameters : { }, resizable : true, title : "Flappy Starling", width : 320, x : null, y : null};
 	attributes.context = { antialiasing : 0, background : 16777215, colorDepth : 32, depth : true, hardware : true, stencil : true, type : null, vsync : false};
 	if(app.__window == null) {
 		if(config != null) {
@@ -1226,65 +1226,6 @@ openfl_display_IBitmapDrawable.prototype = {
 	,__scrollRect: null
 	,__class__: openfl_display_IBitmapDrawable
 };
-var haxe_IMap = function() { };
-$hxClasses["haxe.IMap"] = haxe_IMap;
-haxe_IMap.__name__ = "haxe.IMap";
-haxe_IMap.__isInterface__ = true;
-haxe_IMap.prototype = {
-	get: null
-	,set: null
-	,exists: null
-	,remove: null
-	,keys: null
-	,iterator: null
-	,keyValueIterator: null
-	,__class__: haxe_IMap
-};
-var haxe_ds_StringMap = function() {
-	this.h = Object.create(null);
-};
-$hxClasses["haxe.ds.StringMap"] = haxe_ds_StringMap;
-haxe_ds_StringMap.__name__ = "haxe.ds.StringMap";
-haxe_ds_StringMap.__interfaces__ = [haxe_IMap];
-haxe_ds_StringMap.stringify = function(h) {
-	var s = "{";
-	var first = true;
-	for (var key in h) {
-		if (first) first = false; else s += ',';
-		s += key + ' => ' + Std.string(h[key]);
-	}
-	return s + "}";
-};
-haxe_ds_StringMap.prototype = {
-	h: null
-	,exists: function(key) {
-		return Object.prototype.hasOwnProperty.call(this.h,key);
-	}
-	,get: function(key) {
-		return this.h[key];
-	}
-	,set: function(key,value) {
-		this.h[key] = value;
-	}
-	,remove: function(key) {
-		if(Object.prototype.hasOwnProperty.call(this.h,key)) {
-			delete(this.h[key]);
-			return true;
-		} else {
-			return false;
-		}
-	}
-	,keys: function() {
-		return new haxe_ds__$StringMap_StringMapKeyIterator(this.h);
-	}
-	,iterator: function() {
-		return new haxe_ds__$StringMap_StringMapValueIterator(this.h);
-	}
-	,keyValueIterator: function() {
-		return new haxe_ds__$StringMap_StringMapKeyValueIterator(this.h);
-	}
-	,__class__: haxe_ds_StringMap
-};
 var openfl_Vector = {};
 openfl_Vector.__properties__ = {set_length:"set_length",get_length:"get_length",set_fixed:"set_fixed",get_fixed:"get_fixed"};
 openfl_Vector.concat = function(this1,vec) {
@@ -1453,239 +1394,6 @@ openfl_Vector.get_length = function(this1) {
 };
 openfl_Vector.set_length = function(this1,value) {
 	return this1.set_length(value);
-};
-var openfl__$Vector_IVector = function() { };
-$hxClasses["openfl._Vector.IVector"] = openfl__$Vector_IVector;
-openfl__$Vector_IVector.__name__ = "openfl._Vector.IVector";
-openfl__$Vector_IVector.__isInterface__ = true;
-openfl__$Vector_IVector.prototype = {
-	get_length: null
-	,set_length: null
-	,fixed: null
-	,concat: null
-	,copy: null
-	,filter: null
-	,get: null
-	,indexOf: null
-	,insertAt: null
-	,iterator: null
-	,join: null
-	,lastIndexOf: null
-	,pop: null
-	,push: null
-	,removeAt: null
-	,reverse: null
-	,set: null
-	,shift: null
-	,slice: null
-	,sort: null
-	,splice: null
-	,toString: null
-	,unshift: null
-	,__tempIndex: null
-	,__class__: openfl__$Vector_IVector
-	,__properties__: {set_length:"set_length",get_length:"get_length"}
-};
-var openfl__$Vector_ObjectVector = function(length,fixed,array,forceCopy) {
-	if(forceCopy == null) {
-		forceCopy = false;
-	}
-	if(fixed == null) {
-		fixed = false;
-	}
-	if(length == null) {
-		length = 0;
-	}
-	if(forceCopy) {
-		this.__array = [];
-		if(array != null) {
-			var _g = 0;
-			var _g1 = array.length;
-			while(_g < _g1) {
-				var i = _g++;
-				this.__array[i] = array[i];
-			}
-		}
-	} else {
-		if(array == null) {
-			array = [];
-		}
-		this.__array = array;
-	}
-	if(length > 0) {
-		this.set_length(length);
-	}
-	this.fixed = fixed;
-};
-$hxClasses["openfl._Vector.ObjectVector"] = openfl__$Vector_ObjectVector;
-openfl__$Vector_ObjectVector.__name__ = "openfl._Vector.ObjectVector";
-openfl__$Vector_ObjectVector.__interfaces__ = [openfl__$Vector_IVector];
-openfl__$Vector_ObjectVector.prototype = {
-	fixed: null
-	,__array: null
-	,__tempIndex: null
-	,concat: function(a) {
-		if(a == null) {
-			return new openfl__$Vector_ObjectVector(0,false,this.__array.slice());
-		} else {
-			var other = a;
-			if(other.__array.length > 0) {
-				return new openfl__$Vector_ObjectVector(0,false,this.__array.concat(other.__array));
-			} else {
-				return new openfl__$Vector_ObjectVector(0,false,this.__array.slice());
-			}
-		}
-	}
-	,copy: function() {
-		return new openfl__$Vector_ObjectVector(0,this.fixed,this.__array.slice());
-	}
-	,filter: function(callback) {
-		var tmp = this.fixed;
-		var _g = [];
-		var _g1 = 0;
-		var _g2 = this.__array;
-		while(_g1 < _g2.length) {
-			var v = _g2[_g1];
-			++_g1;
-			if(callback(v)) {
-				_g.push(v);
-			}
-		}
-		return new openfl__$Vector_ObjectVector(0,tmp,_g);
-	}
-	,get: function(index) {
-		return this.__array[index];
-	}
-	,indexOf: function(x,from) {
-		if(from == null) {
-			from = 0;
-		}
-		var _g = from;
-		var _g1 = this.__array.length;
-		while(_g < _g1) {
-			var i = _g++;
-			if(this.__array[i] == x) {
-				return i;
-			}
-		}
-		return -1;
-	}
-	,insertAt: function(index,element) {
-		if(!this.fixed || index < this.__array.length) {
-			this.__array.splice(index,0,element);
-		}
-	}
-	,iterator: function() {
-		return new haxe_iterators_ArrayIterator(this.__array);
-	}
-	,join: function(sep) {
-		if(sep == null) {
-			sep = ",";
-		}
-		return this.__array.join(sep);
-	}
-	,lastIndexOf: function(x,from) {
-		var i = from == null || from >= this.__array.length ? this.__array.length - 1 : from;
-		while(i >= 0) {
-			if(this.__array[i] == x) {
-				return i;
-			}
-			--i;
-		}
-		return -1;
-	}
-	,pop: function() {
-		if(!this.fixed) {
-			return this.__array.pop();
-		} else {
-			return null;
-		}
-	}
-	,push: function(x) {
-		if(!this.fixed) {
-			return this.__array.push(x);
-		} else {
-			return this.__array.length;
-		}
-	}
-	,removeAt: function(index) {
-		if(!this.fixed || index < this.__array.length) {
-			return this.__array.splice(index,1)[0];
-		}
-		return null;
-	}
-	,reverse: function() {
-		this.__array.reverse();
-		return this;
-	}
-	,set: function(index,value) {
-		if(!this.fixed || index < this.__array.length) {
-			return this.__array[index] = value;
-		} else {
-			return value;
-		}
-	}
-	,shift: function() {
-		if(!this.fixed) {
-			return this.__array.shift();
-		} else {
-			return null;
-		}
-	}
-	,slice: function(startIndex,endIndex) {
-		if(startIndex == null) {
-			startIndex = 0;
-		}
-		if(endIndex == null) {
-			endIndex = 16777215;
-		}
-		return new openfl__$Vector_ObjectVector(0,false,this.__array.slice(startIndex,endIndex));
-	}
-	,sort: function(f) {
-		this.__array.sort(f);
-	}
-	,splice: function(pos,len) {
-		return new openfl__$Vector_ObjectVector(0,false,this.__array.splice(pos,len));
-	}
-	,toJSON: function() {
-		return this.__array;
-	}
-	,toString: function() {
-		if(this.__array != null) {
-			return this.__array.toString();
-		} else {
-			return null;
-		}
-	}
-	,unshift: function(x) {
-		if(!this.fixed) {
-			this.__array.unshift(x);
-		}
-	}
-	,get_length: function() {
-		return this.__array.length;
-	}
-	,set_length: function(value) {
-		if(!this.fixed) {
-			var currentLength = this.__array.length;
-			if(value < 0) {
-				value = 0;
-			}
-			if(value > currentLength) {
-				var _g = currentLength;
-				var _g1 = value;
-				while(_g < _g1) {
-					var i = _g++;
-					this.__array.push(null);
-				}
-			} else {
-				while(this.__array.length > value) this.__array.pop();
-			}
-		}
-		return this.__array.length;
-	}
-	,__class__: openfl__$Vector_ObjectVector
-	,__properties__: {set_length:"set_length",get_length:"get_length"}
 };
 var lime_utils_ObjectPool = function(create,clean,size) {
 	this.__pool = new haxe_ds_ObjectMap();
@@ -1903,6 +1611,20 @@ lime_utils_ObjectPool.prototype = {
 	}
 	,__class__: lime_utils_ObjectPool
 	,__properties__: {set_size:"set_size",get_size:"get_size"}
+};
+var haxe_IMap = function() { };
+$hxClasses["haxe.IMap"] = haxe_IMap;
+haxe_IMap.__name__ = "haxe.IMap";
+haxe_IMap.__isInterface__ = true;
+haxe_IMap.prototype = {
+	get: null
+	,set: null
+	,exists: null
+	,remove: null
+	,keys: null
+	,iterator: null
+	,keyValueIterator: null
+	,__class__: haxe_IMap
 };
 var haxe_ds_ObjectMap = function() {
 	this.h = { __keys__ : { }};
@@ -3744,35 +3466,36 @@ openfl_display_Sprite.prototype = $extend(openfl_display_DisplayObjectContainer.
 	,__class__: openfl_display_Sprite
 	,__properties__: $extend(openfl_display_DisplayObjectContainer.prototype.__properties__,{get_graphics:"get_graphics",set_buttonMode:"set_buttonMode",get_buttonMode:"get_buttonMode"})
 });
-var FlappyStarlingMobile = function() {
+var FlappyStarlingWeb = function() {
 	openfl_display_Sprite.call(this);
 	this.addEventListener("addedToStage",$bind(this,this.onAddedToStage));
 };
-$hxClasses["FlappyStarlingMobile"] = FlappyStarlingMobile;
-FlappyStarlingMobile.__name__ = "FlappyStarlingMobile";
-FlappyStarlingMobile.__super__ = openfl_display_Sprite;
-FlappyStarlingMobile.prototype = $extend(openfl_display_Sprite.prototype,{
+$hxClasses["FlappyStarlingWeb"] = FlappyStarlingWeb;
+FlappyStarlingWeb.__name__ = "FlappyStarlingWeb";
+FlappyStarlingWeb.__super__ = openfl_display_Sprite;
+FlappyStarlingWeb.prototype = $extend(openfl_display_Sprite.prototype,{
 	_starling: null
 	,_assets: null
 	,onAddedToStage: function(event) {
 		this.removeEventListener("addedToStage",$bind(this,this.onAddedToStage));
+		this.stage.set_scaleMode(1);
 		this.start();
 	}
 	,start: function() {
 		var _gthis = this;
-		var screen = new utils_ScreenSetup(this.stage.get_fullScreenWidth(),this.stage.get_fullScreenHeight(),[1,2,3]);
+		var screen = new utils_ScreenSetup(480,720,[2]);
 		this._starling = new starling_core_Starling(Game,this.stage,screen.get_viewPort());
-		this._starling.get_stage().set_stageWidth(screen.get_stageWidth() | 0);
-		this._starling.get_stage().set_stageHeight(screen.get_stageHeight() | 0);
+		this._starling.get_stage().set_stageWidth(320);
+		this._starling.get_stage().set_stageHeight(480);
 		this._starling.addEventListener("rootCreated",function() {
-			haxe_Log.trace("screen.assetScale = ",{ fileName : "src/FlappyStarlingMobile.hx", lineNumber : 42, className : "FlappyStarlingMobile", methodName : "start", customParams : [screen.get_assetScale()]});
+			haxe_Log.trace("screen.assetScale = ",{ fileName : "src/FlappyStarlingWeb.hx", lineNumber : 41, className : "FlappyStarlingWeb", methodName : "start", customParams : [screen.get_assetScale()]});
 			_gthis.loadAssets(screen.get_assetScale(),$bind(_gthis,_gthis.startGame));
 		});
 		this.stage.addEventListener("resize",$bind(this,this.onResize),false,2147483647,true);
 		this._starling.start();
 	}
 	,loadAssets: function(scale,onComplete) {
-		haxe_Log.trace(starling_utils_StringUtil.format("assets/textures/{0}x/atlas.png",[scale]),{ fileName : "src/FlappyStarlingMobile.hx", lineNumber : 59, className : "FlappyStarlingMobile", methodName : "loadAssets"});
+		haxe_Log.trace(starling_utils_StringUtil.format("assets/textures/{0}x/atlas.png",[scale]),{ fileName : "src/FlappyStarlingWeb.hx", lineNumber : 49, className : "FlappyStarlingWeb", methodName : "loadAssets"});
 		this._assets = new starling_assets_AssetManager(scale);
 		this._assets.set_verbose(openfl_system_Capabilities.isDebugger);
 		this._assets.enqueue([openfl_utils_Assets.getPath(starling_utils_StringUtil.format("assets/textures/{0}x/atlas.png",[scale])),openfl_utils_Assets.getPath(starling_utils_StringUtil.format("assets/textures/{0}x/atlas.xml",[scale])),openfl_utils_Assets.getPath(starling_utils_StringUtil.format("assets/fonts/{0}x/bradybunch.png",[scale])),openfl_utils_Assets.getPath(starling_utils_StringUtil.format("assets/fonts/{0}x/bradybunch.fnt",[scale])),openfl_utils_Assets.getPath("assets/sounds/crash.mp3"),openfl_utils_Assets.getPath("assets/sounds/flap.mp3"),openfl_utils_Assets.getPath("assets/sounds/pass.mp3")]);
@@ -3780,7 +3503,7 @@ FlappyStarlingMobile.prototype = $extend(openfl_display_Sprite.prototype,{
 	}
 	,startGame: function() {
 		var game = js_Boot.__cast(this._starling.get_root() , Game);
-		haxe_Log.trace("Assets Done Loading",{ fileName : "src/FlappyStarlingMobile.hx", lineNumber : 76, className : "FlappyStarlingMobile", methodName : "startGame"});
+		haxe_Log.trace("Assets Done Loading",{ fileName : "src/FlappyStarlingWeb.hx", lineNumber : 66, className : "FlappyStarlingWeb", methodName : "startGame"});
 		game.start(this._assets);
 	}
 	,onResize: function(e) {
@@ -3793,17 +3516,17 @@ FlappyStarlingMobile.prototype = $extend(openfl_display_Sprite.prototype,{
 			}
 		}
 	}
-	,__class__: FlappyStarlingMobile
+	,__class__: FlappyStarlingWeb
 });
 var DocumentClass = function(current) {
 	current.addChild(this);
-	FlappyStarlingMobile.call(this);
+	FlappyStarlingWeb.call(this);
 	this.dispatchEvent(new openfl_events_Event("addedToStage",false,false));
 };
 $hxClasses["DocumentClass"] = DocumentClass;
 DocumentClass.__name__ = "DocumentClass";
-DocumentClass.__super__ = FlappyStarlingMobile;
-DocumentClass.prototype = $extend(FlappyStarlingMobile.prototype,{
+DocumentClass.__super__ = FlappyStarlingWeb;
+DocumentClass.prototype = $extend(FlappyStarlingWeb.prototype,{
 	__class__: DocumentClass
 });
 var Constants = function() { };
@@ -5512,207 +5235,6 @@ openfl_geom_Matrix3D.prototype = {
 	}
 	,__class__: openfl_geom_Matrix3D
 	,__properties__: {set_position:"set_position",get_position:"get_position",get_determinant:"get_determinant"}
-};
-var openfl__$Vector_FloatVector = function(length,fixed,array,forceCopy) {
-	if(forceCopy == null) {
-		forceCopy = false;
-	}
-	if(fixed == null) {
-		fixed = false;
-	}
-	if(length == null) {
-		length = 0;
-	}
-	if(forceCopy) {
-		this.__array = [];
-		if(array != null) {
-			var _g = 0;
-			var _g1 = array.length;
-			while(_g < _g1) {
-				var i = _g++;
-				this.__array[i] = array[i];
-			}
-		}
-	} else {
-		if(array == null) {
-			array = [];
-		}
-		this.__array = array;
-	}
-	if(length > 0) {
-		this.set_length(length);
-	}
-	this.fixed = fixed;
-};
-$hxClasses["openfl._Vector.FloatVector"] = openfl__$Vector_FloatVector;
-openfl__$Vector_FloatVector.__name__ = "openfl._Vector.FloatVector";
-openfl__$Vector_FloatVector.__interfaces__ = [openfl__$Vector_IVector];
-openfl__$Vector_FloatVector.prototype = {
-	fixed: null
-	,__array: null
-	,__tempIndex: null
-	,concat: function(a) {
-		if(a == null) {
-			return new openfl__$Vector_FloatVector(0,false,this.__array.slice());
-		} else {
-			var other = a;
-			if(other.__array.length > 0) {
-				return new openfl__$Vector_FloatVector(0,false,this.__array.concat(other.__array));
-			} else {
-				return new openfl__$Vector_FloatVector(0,false,this.__array.slice());
-			}
-		}
-	}
-	,copy: function() {
-		return new openfl__$Vector_FloatVector(0,this.fixed,this.__array.slice());
-	}
-	,filter: function(callback) {
-		var tmp = this.fixed;
-		var _g = [];
-		var _g1 = 0;
-		var _g2 = this.__array;
-		while(_g1 < _g2.length) {
-			var v = _g2[_g1];
-			++_g1;
-			if(callback(v)) {
-				_g.push(v);
-			}
-		}
-		return new openfl__$Vector_FloatVector(0,tmp,_g);
-	}
-	,get: function(index) {
-		return this.__array[index];
-	}
-	,indexOf: function(x,from) {
-		if(from == null) {
-			from = 0;
-		}
-		var _g = from;
-		var _g1 = this.__array.length;
-		while(_g < _g1) {
-			var i = _g++;
-			if(this.__array[i] == x) {
-				return i;
-			}
-		}
-		return -1;
-	}
-	,insertAt: function(index,element) {
-		if(!this.fixed || index < this.__array.length) {
-			this.__array.splice(index,0,element);
-		}
-	}
-	,iterator: function() {
-		return new haxe_iterators_ArrayIterator(this.__array);
-	}
-	,join: function(sep) {
-		if(sep == null) {
-			sep = ",";
-		}
-		return this.__array.join(sep);
-	}
-	,lastIndexOf: function(x,from) {
-		var i = from == null || from >= this.__array.length ? this.__array.length - 1 : from;
-		while(i >= 0) {
-			if(this.__array[i] == x) {
-				return i;
-			}
-			--i;
-		}
-		return -1;
-	}
-	,pop: function() {
-		if(!this.fixed) {
-			return this.__array.pop();
-		} else {
-			return null;
-		}
-	}
-	,push: function(x) {
-		if(!this.fixed) {
-			return this.__array.push(x);
-		} else {
-			return this.__array.length;
-		}
-	}
-	,removeAt: function(index) {
-		if(!this.fixed || index < this.__array.length) {
-			return this.__array.splice(index,1)[0];
-		}
-		return 0;
-	}
-	,reverse: function() {
-		this.__array.reverse();
-		return this;
-	}
-	,set: function(index,value) {
-		if(!this.fixed || index < this.__array.length) {
-			return this.__array[index] = value;
-		} else {
-			return value;
-		}
-	}
-	,shift: function() {
-		if(!this.fixed) {
-			return this.__array.shift();
-		} else {
-			return null;
-		}
-	}
-	,slice: function(startIndex,endIndex) {
-		if(startIndex == null) {
-			startIndex = 0;
-		}
-		if(endIndex == null) {
-			endIndex = 16777215;
-		}
-		return new openfl__$Vector_FloatVector(0,false,this.__array.slice(startIndex,endIndex));
-	}
-	,sort: function(f) {
-		this.__array.sort(f);
-	}
-	,splice: function(pos,len) {
-		return new openfl__$Vector_FloatVector(0,false,this.__array.splice(pos,len));
-	}
-	,toJSON: function() {
-		return this.__array;
-	}
-	,toString: function() {
-		if(this.__array != null) {
-			return this.__array.toString();
-		} else {
-			return null;
-		}
-	}
-	,unshift: function(x) {
-		if(!this.fixed) {
-			this.__array.unshift(x);
-		}
-	}
-	,get_length: function() {
-		return this.__array.length;
-	}
-	,set_length: function(value) {
-		if(value != this.__array.length && !this.fixed) {
-			var currentLength = this.__array.length;
-			if(value < 0) {
-				value = 0;
-			}
-			if(value > currentLength) {
-				var _g = currentLength;
-				var _g1 = value;
-				while(_g < _g1) {
-					var i = _g++;
-					this.__array[i] = 0;
-				}
-			} else {
-				while(this.__array.length > value) this.__array.pop();
-			}
-		}
-		return this.__array.length;
-	}
-	,__class__: openfl__$Vector_FloatVector
-	,__properties__: {set_length:"set_length",get_length:"get_length"}
 };
 var openfl_geom_Point = function(x,y) {
 	if(y == null) {
@@ -7946,6 +7468,7 @@ Reflect.field = function(o,field) {
 	try {
 		return o[field];
 	} catch( _g ) {
+		haxe_NativeStackTrace.lastError = _g;
 		return null;
 	}
 };
@@ -8446,6 +7969,7 @@ World.prototype = $extend(starling_display_Sprite.prototype,{
 				try {
 					obstacle = js_Boot.__cast(this._obstacles.getChildAt(i) , Obstacle);
 				} catch( _g2 ) {
+					haxe_NativeStackTrace.lastError = _g2;
 					obstacle = null;
 				}
 				if(!obstacle.get_passed() && this._bird.get_x() > obstacle.get_x()) {
@@ -10399,6 +9923,7 @@ haxe_ds_BalancedTree.prototype = {
 			this.root = this.removeLoop(key,this.root);
 			return true;
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 			if(typeof(haxe_Exception.caught(_g).unwrap()) == "string") {
 				return false;
 			} else {
@@ -10673,6 +10198,51 @@ haxe_ds__$List_ListIterator.prototype = {
 	}
 	,__class__: haxe_ds__$List_ListIterator
 };
+var haxe_ds_StringMap = function() {
+	this.h = Object.create(null);
+};
+$hxClasses["haxe.ds.StringMap"] = haxe_ds_StringMap;
+haxe_ds_StringMap.__name__ = "haxe.ds.StringMap";
+haxe_ds_StringMap.__interfaces__ = [haxe_IMap];
+haxe_ds_StringMap.stringify = function(h) {
+	var s = "{";
+	var first = true;
+	for (var key in h) {
+		if (first) first = false; else s += ',';
+		s += key + ' => ' + Std.string(h[key]);
+	}
+	return s + "}";
+};
+haxe_ds_StringMap.prototype = {
+	h: null
+	,exists: function(key) {
+		return Object.prototype.hasOwnProperty.call(this.h,key);
+	}
+	,get: function(key) {
+		return this.h[key];
+	}
+	,set: function(key,value) {
+		this.h[key] = value;
+	}
+	,remove: function(key) {
+		if(Object.prototype.hasOwnProperty.call(this.h,key)) {
+			delete(this.h[key]);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	,keys: function() {
+		return new haxe_ds__$StringMap_StringMapKeyIterator(this.h);
+	}
+	,iterator: function() {
+		return new haxe_ds__$StringMap_StringMapValueIterator(this.h);
+	}
+	,keyValueIterator: function() {
+		return new haxe_ds__$StringMap_StringMapKeyValueIterator(this.h);
+	}
+	,__class__: haxe_ds_StringMap
+};
 var haxe_ds__$StringMap_StringMapKeyIterator = function(h) {
 	this.h = h;
 	this.keys = Object.keys(h);
@@ -10857,6 +10427,7 @@ haxe_io_Input.prototype = {
 				--k;
 			}
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 			if(!((haxe_Exception.caught(_g).unwrap()) instanceof haxe_io_Eof)) {
 				throw _g;
 			}
@@ -12385,6 +11956,7 @@ js_Boot.__string_rec = function(o,s) {
 		try {
 			tostr = o.toString;
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 			return "???";
 		}
 		if(tostr != null && tostr != Object.toString && typeof(tostr) == "function") {
@@ -12540,6 +12112,7 @@ js_Browser.getLocalStorage = function() {
 		}
 		return s;
 	} catch( _g ) {
+		haxe_NativeStackTrace.lastError = _g;
 		return null;
 	}
 };
@@ -18203,6 +17776,7 @@ var lime_app_Future = function(work,async) {
 				this.value = work();
 				this.isComplete = true;
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.error = e;
 				this.isError = true;
@@ -18345,6 +17919,7 @@ lime_app__$Future_FutureWork.threadPool_doWork = function(state) {
 		var result = state.work();
 		lime_app__$Future_FutureWork.threadPool.sendComplete({ promise : state.promise, result : result});
 	} catch( _g ) {
+		haxe_NativeStackTrace.lastError = _g;
 		var e = haxe_Exception.caught(_g).unwrap();
 		lime_app__$Future_FutureWork.threadPool.sendError({ promise : state.promise, error : e});
 	}
@@ -25148,6 +24723,7 @@ var lime_media_AudioContext = function(type) {
 				this.web = new window.AudioContext ();
 				this.type = "web";
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 			}
 		}
 		if(this.web == null && type != "web") {
@@ -28742,7 +28318,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 333512;
+	this.version = 5724;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -31220,6 +30796,38 @@ openfl_Lib.get_current = function() {
 	}
 	return openfl_utils__$internal_Lib.current;
 };
+var openfl__$Vector_IVector = function() { };
+$hxClasses["openfl._Vector.IVector"] = openfl__$Vector_IVector;
+openfl__$Vector_IVector.__name__ = "openfl._Vector.IVector";
+openfl__$Vector_IVector.__isInterface__ = true;
+openfl__$Vector_IVector.prototype = {
+	get_length: null
+	,set_length: null
+	,fixed: null
+	,concat: null
+	,copy: null
+	,filter: null
+	,get: null
+	,indexOf: null
+	,insertAt: null
+	,iterator: null
+	,join: null
+	,lastIndexOf: null
+	,pop: null
+	,push: null
+	,removeAt: null
+	,reverse: null
+	,set: null
+	,shift: null
+	,slice: null
+	,sort: null
+	,splice: null
+	,toString: null
+	,unshift: null
+	,__tempIndex: null
+	,__class__: openfl__$Vector_IVector
+	,__properties__: {set_length:"set_length",get_length:"get_length"}
+};
 var openfl__$Vector_BoolVector = function(length,fixed,array) {
 	if(fixed == null) {
 		fixed = false;
@@ -31408,6 +31016,207 @@ openfl__$Vector_BoolVector.prototype = {
 		return this.__array.length;
 	}
 	,__class__: openfl__$Vector_BoolVector
+	,__properties__: {set_length:"set_length",get_length:"get_length"}
+};
+var openfl__$Vector_FloatVector = function(length,fixed,array,forceCopy) {
+	if(forceCopy == null) {
+		forceCopy = false;
+	}
+	if(fixed == null) {
+		fixed = false;
+	}
+	if(length == null) {
+		length = 0;
+	}
+	if(forceCopy) {
+		this.__array = [];
+		if(array != null) {
+			var _g = 0;
+			var _g1 = array.length;
+			while(_g < _g1) {
+				var i = _g++;
+				this.__array[i] = array[i];
+			}
+		}
+	} else {
+		if(array == null) {
+			array = [];
+		}
+		this.__array = array;
+	}
+	if(length > 0) {
+		this.set_length(length);
+	}
+	this.fixed = fixed;
+};
+$hxClasses["openfl._Vector.FloatVector"] = openfl__$Vector_FloatVector;
+openfl__$Vector_FloatVector.__name__ = "openfl._Vector.FloatVector";
+openfl__$Vector_FloatVector.__interfaces__ = [openfl__$Vector_IVector];
+openfl__$Vector_FloatVector.prototype = {
+	fixed: null
+	,__array: null
+	,__tempIndex: null
+	,concat: function(a) {
+		if(a == null) {
+			return new openfl__$Vector_FloatVector(0,false,this.__array.slice());
+		} else {
+			var other = a;
+			if(other.__array.length > 0) {
+				return new openfl__$Vector_FloatVector(0,false,this.__array.concat(other.__array));
+			} else {
+				return new openfl__$Vector_FloatVector(0,false,this.__array.slice());
+			}
+		}
+	}
+	,copy: function() {
+		return new openfl__$Vector_FloatVector(0,this.fixed,this.__array.slice());
+	}
+	,filter: function(callback) {
+		var tmp = this.fixed;
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = this.__array;
+		while(_g1 < _g2.length) {
+			var v = _g2[_g1];
+			++_g1;
+			if(callback(v)) {
+				_g.push(v);
+			}
+		}
+		return new openfl__$Vector_FloatVector(0,tmp,_g);
+	}
+	,get: function(index) {
+		return this.__array[index];
+	}
+	,indexOf: function(x,from) {
+		if(from == null) {
+			from = 0;
+		}
+		var _g = from;
+		var _g1 = this.__array.length;
+		while(_g < _g1) {
+			var i = _g++;
+			if(this.__array[i] == x) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	,insertAt: function(index,element) {
+		if(!this.fixed || index < this.__array.length) {
+			this.__array.splice(index,0,element);
+		}
+	}
+	,iterator: function() {
+		return new haxe_iterators_ArrayIterator(this.__array);
+	}
+	,join: function(sep) {
+		if(sep == null) {
+			sep = ",";
+		}
+		return this.__array.join(sep);
+	}
+	,lastIndexOf: function(x,from) {
+		var i = from == null || from >= this.__array.length ? this.__array.length - 1 : from;
+		while(i >= 0) {
+			if(this.__array[i] == x) {
+				return i;
+			}
+			--i;
+		}
+		return -1;
+	}
+	,pop: function() {
+		if(!this.fixed) {
+			return this.__array.pop();
+		} else {
+			return null;
+		}
+	}
+	,push: function(x) {
+		if(!this.fixed) {
+			return this.__array.push(x);
+		} else {
+			return this.__array.length;
+		}
+	}
+	,removeAt: function(index) {
+		if(!this.fixed || index < this.__array.length) {
+			return this.__array.splice(index,1)[0];
+		}
+		return 0;
+	}
+	,reverse: function() {
+		this.__array.reverse();
+		return this;
+	}
+	,set: function(index,value) {
+		if(!this.fixed || index < this.__array.length) {
+			return this.__array[index] = value;
+		} else {
+			return value;
+		}
+	}
+	,shift: function() {
+		if(!this.fixed) {
+			return this.__array.shift();
+		} else {
+			return null;
+		}
+	}
+	,slice: function(startIndex,endIndex) {
+		if(startIndex == null) {
+			startIndex = 0;
+		}
+		if(endIndex == null) {
+			endIndex = 16777215;
+		}
+		return new openfl__$Vector_FloatVector(0,false,this.__array.slice(startIndex,endIndex));
+	}
+	,sort: function(f) {
+		this.__array.sort(f);
+	}
+	,splice: function(pos,len) {
+		return new openfl__$Vector_FloatVector(0,false,this.__array.splice(pos,len));
+	}
+	,toJSON: function() {
+		return this.__array;
+	}
+	,toString: function() {
+		if(this.__array != null) {
+			return this.__array.toString();
+		} else {
+			return null;
+		}
+	}
+	,unshift: function(x) {
+		if(!this.fixed) {
+			this.__array.unshift(x);
+		}
+	}
+	,get_length: function() {
+		return this.__array.length;
+	}
+	,set_length: function(value) {
+		if(value != this.__array.length && !this.fixed) {
+			var currentLength = this.__array.length;
+			if(value < 0) {
+				value = 0;
+			}
+			if(value > currentLength) {
+				var _g = currentLength;
+				var _g1 = value;
+				while(_g < _g1) {
+					var i = _g++;
+					this.__array[i] = 0;
+				}
+			} else {
+				while(this.__array.length > value) this.__array.pop();
+			}
+		}
+		return this.__array.length;
+	}
+	,__class__: openfl__$Vector_FloatVector
 	,__properties__: {set_length:"set_length",get_length:"get_length"}
 };
 var openfl__$Vector_FunctionVector = function(length,fixed,array) {
@@ -31784,6 +31593,207 @@ openfl__$Vector_IntVector.prototype = {
 		return this.__array.length;
 	}
 	,__class__: openfl__$Vector_IntVector
+	,__properties__: {set_length:"set_length",get_length:"get_length"}
+};
+var openfl__$Vector_ObjectVector = function(length,fixed,array,forceCopy) {
+	if(forceCopy == null) {
+		forceCopy = false;
+	}
+	if(fixed == null) {
+		fixed = false;
+	}
+	if(length == null) {
+		length = 0;
+	}
+	if(forceCopy) {
+		this.__array = [];
+		if(array != null) {
+			var _g = 0;
+			var _g1 = array.length;
+			while(_g < _g1) {
+				var i = _g++;
+				this.__array[i] = array[i];
+			}
+		}
+	} else {
+		if(array == null) {
+			array = [];
+		}
+		this.__array = array;
+	}
+	if(length > 0) {
+		this.set_length(length);
+	}
+	this.fixed = fixed;
+};
+$hxClasses["openfl._Vector.ObjectVector"] = openfl__$Vector_ObjectVector;
+openfl__$Vector_ObjectVector.__name__ = "openfl._Vector.ObjectVector";
+openfl__$Vector_ObjectVector.__interfaces__ = [openfl__$Vector_IVector];
+openfl__$Vector_ObjectVector.prototype = {
+	fixed: null
+	,__array: null
+	,__tempIndex: null
+	,concat: function(a) {
+		if(a == null) {
+			return new openfl__$Vector_ObjectVector(0,false,this.__array.slice());
+		} else {
+			var other = a;
+			if(other.__array.length > 0) {
+				return new openfl__$Vector_ObjectVector(0,false,this.__array.concat(other.__array));
+			} else {
+				return new openfl__$Vector_ObjectVector(0,false,this.__array.slice());
+			}
+		}
+	}
+	,copy: function() {
+		return new openfl__$Vector_ObjectVector(0,this.fixed,this.__array.slice());
+	}
+	,filter: function(callback) {
+		var tmp = this.fixed;
+		var _g = [];
+		var _g1 = 0;
+		var _g2 = this.__array;
+		while(_g1 < _g2.length) {
+			var v = _g2[_g1];
+			++_g1;
+			if(callback(v)) {
+				_g.push(v);
+			}
+		}
+		return new openfl__$Vector_ObjectVector(0,tmp,_g);
+	}
+	,get: function(index) {
+		return this.__array[index];
+	}
+	,indexOf: function(x,from) {
+		if(from == null) {
+			from = 0;
+		}
+		var _g = from;
+		var _g1 = this.__array.length;
+		while(_g < _g1) {
+			var i = _g++;
+			if(this.__array[i] == x) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	,insertAt: function(index,element) {
+		if(!this.fixed || index < this.__array.length) {
+			this.__array.splice(index,0,element);
+		}
+	}
+	,iterator: function() {
+		return new haxe_iterators_ArrayIterator(this.__array);
+	}
+	,join: function(sep) {
+		if(sep == null) {
+			sep = ",";
+		}
+		return this.__array.join(sep);
+	}
+	,lastIndexOf: function(x,from) {
+		var i = from == null || from >= this.__array.length ? this.__array.length - 1 : from;
+		while(i >= 0) {
+			if(this.__array[i] == x) {
+				return i;
+			}
+			--i;
+		}
+		return -1;
+	}
+	,pop: function() {
+		if(!this.fixed) {
+			return this.__array.pop();
+		} else {
+			return null;
+		}
+	}
+	,push: function(x) {
+		if(!this.fixed) {
+			return this.__array.push(x);
+		} else {
+			return this.__array.length;
+		}
+	}
+	,removeAt: function(index) {
+		if(!this.fixed || index < this.__array.length) {
+			return this.__array.splice(index,1)[0];
+		}
+		return null;
+	}
+	,reverse: function() {
+		this.__array.reverse();
+		return this;
+	}
+	,set: function(index,value) {
+		if(!this.fixed || index < this.__array.length) {
+			return this.__array[index] = value;
+		} else {
+			return value;
+		}
+	}
+	,shift: function() {
+		if(!this.fixed) {
+			return this.__array.shift();
+		} else {
+			return null;
+		}
+	}
+	,slice: function(startIndex,endIndex) {
+		if(startIndex == null) {
+			startIndex = 0;
+		}
+		if(endIndex == null) {
+			endIndex = 16777215;
+		}
+		return new openfl__$Vector_ObjectVector(0,false,this.__array.slice(startIndex,endIndex));
+	}
+	,sort: function(f) {
+		this.__array.sort(f);
+	}
+	,splice: function(pos,len) {
+		return new openfl__$Vector_ObjectVector(0,false,this.__array.splice(pos,len));
+	}
+	,toJSON: function() {
+		return this.__array;
+	}
+	,toString: function() {
+		if(this.__array != null) {
+			return this.__array.toString();
+		} else {
+			return null;
+		}
+	}
+	,unshift: function(x) {
+		if(!this.fixed) {
+			this.__array.unshift(x);
+		}
+	}
+	,get_length: function() {
+		return this.__array.length;
+	}
+	,set_length: function(value) {
+		if(!this.fixed) {
+			var currentLength = this.__array.length;
+			if(value < 0) {
+				value = 0;
+			}
+			if(value > currentLength) {
+				var _g = currentLength;
+				var _g1 = value;
+				while(_g < _g1) {
+					var i = _g++;
+					this.__array.push(null);
+				}
+			} else {
+				while(this.__array.length > value) this.__array.pop();
+			}
+		}
+		return this.__array.length;
+	}
+	,__class__: openfl__$Vector_ObjectVector
 	,__properties__: {set_length:"set_length",get_length:"get_length"}
 };
 var openfl_display_Application = function() {
@@ -40790,6 +40800,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 						try {
 							dispatcher.__dispatch(event);
 						} catch( _g1 ) {
+							haxe_NativeStackTrace.lastError = _g1;
 							var e = haxe_Exception.caught(_g1).unwrap();
 							this.__handleError(e);
 						}
@@ -40835,6 +40846,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			try {
 				result = openfl_display_DisplayObjectContainer.prototype.__dispatchEvent.call(this,event);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 				result = false;
@@ -40890,6 +40902,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 					}
 				}
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 			}
@@ -40937,6 +40950,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			try {
 				return target.__dispatchEvent(event);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 				return false;
@@ -40993,6 +41007,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 		try {
 			openfl_Lib.get_current().__loaderInfo.uncaughtErrorEvents.dispatchEvent(event);
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 		}
 		if(!event.__preventDefault) {
 			var message = haxe_CallStack.toString(haxe_CallStack.exceptionStack());
@@ -41009,6 +41024,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 					console.log(msg);
 				}
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 			}
 			throw e;
 		}
@@ -41704,6 +41720,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			try {
 				openfl_ui_GameInput.__onGamepadAxisMove(gamepad,axis,value);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 			}
@@ -41716,6 +41733,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			try {
 				openfl_ui_GameInput.__onGamepadButtonDown(gamepad,button);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 			}
@@ -41728,6 +41746,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			try {
 				openfl_ui_GameInput.__onGamepadButtonUp(gamepad,button);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 			}
@@ -41740,6 +41759,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			try {
 				openfl_ui_GameInput.__onGamepadConnect(gamepad);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 			}
@@ -41776,6 +41796,7 @@ openfl_display_Stage.prototype = $extend(openfl_display_DisplayObjectContainer.p
 			try {
 				openfl_ui_GameInput.__onGamepadDisconnect(gamepad);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				this.__handleError(e);
 			}
@@ -44343,6 +44364,7 @@ var openfl_display_Window = function(application,attributes) {
 		try {
 			this.stage.get_loaderInfo().parameters = attributes.parameters;
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 		}
 	}
 	this.stage.__setLogicalSize(attributes.width,attributes.height);
@@ -70033,6 +70055,7 @@ openfl_net_NetStream.prototype = $extend(openfl_events_EventDispatcher.prototype
 				var handler = this.client.onPlayStatus;
 				handler({ code : code, duration : this.__video.duration, position : this.__video.currentTime, speed : this.__video.playbackRate, start : this.__video.startTime});
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 			}
 		}
 	}
@@ -70063,6 +70086,7 @@ openfl_net_NetStream.prototype = $extend(openfl_events_EventDispatcher.prototype
 				var handler = this.client.onMetaData;
 				handler({ width : this.__video.videoWidth, height : this.__video.videoHeight, duration : this.__video.duration});
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 			}
 		}
 	}
@@ -70175,6 +70199,7 @@ openfl_net_SharedObject.getLocal = function(name,localPath,secure) {
 				encodedData = storage.getItem(localPath + ":" + name);
 			}
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 		}
 		var sharedObject = new openfl_net_SharedObject();
 		sharedObject.data = { };
@@ -70186,6 +70211,7 @@ openfl_net_SharedObject.getLocal = function(name,localPath,secure) {
 				unserializer.setResolver({ resolveEnum : Type.resolveEnum, resolveClass : openfl_net_SharedObject.__resolveClass});
 				sharedObject.data = unserializer.unserialize();
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 			}
 		}
 		openfl_net_SharedObject.__sharedObjects.h[id] = sharedObject;
@@ -70275,6 +70301,7 @@ openfl_net_SharedObject.prototype = $extend(openfl_events_EventDispatcher.protot
 				storage.removeItem(this.__localPath + ":" + this.__name);
 			}
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 		}
 	}
 	,close: function() {
@@ -70297,6 +70324,7 @@ openfl_net_SharedObject.prototype = $extend(openfl_events_EventDispatcher.protot
 				storage.setItem(this.__localPath + ":" + this.__name,encodedData);
 			}
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 			return 1;
 		}
 		return 0;
@@ -70316,6 +70344,7 @@ openfl_net_SharedObject.prototype = $extend(openfl_events_EventDispatcher.protot
 			var d = haxe_Serializer.run(this.data);
 			return haxe_io_Bytes.ofString(d).length;
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 			return 0;
 		}
 	}
@@ -71844,6 +71873,7 @@ openfl_text_TextField.prototype = $extend(openfl_display_InteractiveObject.proto
 					rect.setTo(x,group1.offsetY,lastPosition,group1.ascent + group1.descent);
 					return true;
 				} catch( _g2 ) {
+					haxe_NativeStackTrace.lastError = _g2;
 				}
 			}
 		}
@@ -81235,6 +81265,7 @@ starling_assets_AtfTextureFactory.prototype = $extend(starling_assets_AssetFacto
 			try {
 				texture = starling_textures_Texture.fromData(reference.get_data(),reference.get_textureOptions());
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				onError(e);
 			}
@@ -81246,6 +81277,7 @@ starling_assets_AtfTextureFactory.prototype = $extend(starling_assets_AssetFacto
 							try {
 								texture.get_root().uploadAtfData(data);
 							} catch( _g ) {
+								haxe_NativeStackTrace.lastError = _g;
 								var e = haxe_Exception.caught(_g).unwrap();
 								helper.log("Texture restoration failed: " + Std.string(e));
 							}
@@ -81305,6 +81337,7 @@ starling_assets_BitmapTextureFactory.prototype = $extend(starling_assets_AssetFa
 			try {
 				texture = starling_textures_Texture.fromData(bitmapData,options);
 			} catch( _g ) {
+				haxe_NativeStackTrace.lastError = _g;
 				var e = haxe_Exception.caught(_g).unwrap();
 				onError(e);
 			}
@@ -81323,6 +81356,7 @@ starling_assets_BitmapTextureFactory.prototype = $extend(starling_assets_AssetFa
 					try {
 						texture.get_root().uploadBitmapData(bitmapData);
 					} catch( _g ) {
+						haxe_NativeStackTrace.lastError = _g;
 						var e = haxe_Exception.caught(_g).unwrap();
 						helper.log("Texture restoration failed: " + Std.string(e));
 					}
@@ -91002,6 +91036,7 @@ starling_text_BitmapFont.prototype = {
 			}
 			this.parseFontXml(fontXml);
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 			throw new openfl_errors_ArgumentError("BitmapFont only supports XML data");
 		}
 	}
@@ -92633,6 +92668,7 @@ starling_textures_TextureAtlas.prototype = {
 			}
 			this.parseAtlasXml(atlasXml);
 		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
 			throw new openfl_errors_ArgumentError("TextureAtlas only supports XML data");
 		}
 	}
@@ -94505,8 +94541,6 @@ openfl_ui_Multitouch.supportedGestures = null;
 openfl_ui_Multitouch.supportsGestureEvents = false;
 openfl_ui_Multitouch.inputMode = 2;
 openfl_Vector.__meta__ = { statics : { toNullVector : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
-openfl__$Vector_IVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
-openfl__$Vector_ObjectVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, fields : { concat : { SuppressWarnings : ["checkstyle:Dynamic"]}, toJSON : { SuppressWarnings : ["checkstyle:Dynamic"]}, _ : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl_display_DisplayObject.__meta__ = { fields : { __cairo : { SuppressWarnings : ["checkstyle:Dynamic"]}, addEventListener : { SuppressWarnings : ["checkstyle:Dynamic"]}, removeEventListener : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl_display_DisplayObject.__broadcastEvents = new haxe_ds_StringMap();
 openfl_display_DisplayObject.__instanceCount = 0;
@@ -94530,7 +94564,6 @@ openfl_geom_Matrix.__pool = new lime_utils_ObjectPool(function() {
 });
 openfl_geom_Matrix.__matrix3 = new lime_math_Matrix3();
 openfl_geom_Matrix3D.__meta__ = { statics : { create2D : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, createABCD : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, createOrtho : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
-openfl__$Vector_FloatVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, fields : { toJSON : { SuppressWarnings : ["checkstyle:Dynamic"]}, _ : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl_geom_Point.__pool = new lime_utils_ObjectPool(function() {
 	return new openfl_geom_Point();
 },function(p) {
@@ -95956,9 +95989,12 @@ openfl_Lib.__lastTimerID = 0;
 openfl_Lib.__sentWarnings = new haxe_ds_StringMap();
 openfl_Lib.__timers = new haxe_ds_IntMap();
 openfl_Lib.__registeredClassAliases = new haxe_ds_StringMap();
+openfl__$Vector_IVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 openfl__$Vector_BoolVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, fields : { toJSON : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
+openfl__$Vector_FloatVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, fields : { toJSON : { SuppressWarnings : ["checkstyle:Dynamic"]}, _ : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl__$Vector_FunctionVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, fields : { toJSON : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl__$Vector_IntVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, fields : { toJSON : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
+openfl__$Vector_ObjectVector.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}, fields : { concat : { SuppressWarnings : ["checkstyle:Dynamic"]}, toJSON : { SuppressWarnings : ["checkstyle:Dynamic"]}, _ : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl_display_Application.__meta__ = { obj : { SuppressWarnings : ["checkstyle:FieldDocComment"]}};
 openfl_display_BitmapData.__meta__ = { fields : { image : { SuppressWarnings : ["checkstyle:Dynamic"]}, __framebufferContext : { SuppressWarnings : ["checkstyle:Dynamic"]}, __indexBufferContext : { SuppressWarnings : ["checkstyle:Dynamic"]}, __surface : { SuppressWarnings : ["checkstyle:Dynamic"]}, __textureContext : { SuppressWarnings : ["checkstyle:Dynamic"]}, __vertexBufferContext : { SuppressWarnings : ["checkstyle:Dynamic"]}, compare : { SuppressWarnings : ["checkstyle:Dynamic"]}, getSurface : { SuppressWarnings : ["checkstyle:Dynamic"]}, __fromImage : { SuppressWarnings : ["checkstyle:Dynamic"]}}};
 openfl_display_BitmapData.VERTEX_BUFFER_STRIDE = 14;
