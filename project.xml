@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="Flappy Starling" package="com.gamua.flappy-starling" version="1.0.0" company="Gamua" />
+	<app main="FlappyStarlingMobile" file="flappy-starling" path="bin" swf-version="19" />
+	
+	<window width="320" height="480" orientation="portrait" background="0xffffff" />
+	<window resizable="false" unless="mobile || console" />
+	<window depth-buffer="true" stencil-buffer="true" />
+	
+	<source path="src" />
+	
+	<haxelib name="starling" />
+	<haxelib name="openfl" />
+	
+	<assets path="assets/sounds" embed="false" />
+	<assets path="assets/textures/1x" if="air || mobile" embed="false" />
+	<assets path="assets/textures/2x" embed="false" />
+	<assets path="assets/textures/3x" if="air || mobile" embed="false" />
+	<assets path="assets/fonts/1x" if="air || mobile" embed="false" />
+	<assets path="assets/fonts/2x"  embed="false" />
+	<assets path="assets/fonts/3x" if="air || mobile" embed="false" />
+	
+</project>

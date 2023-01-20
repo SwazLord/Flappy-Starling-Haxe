@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/28.0">
+	<id>com.gamua.flappy-starling</id>
+	<versionLabel>1.0.0</versionLabel>
+	<versionNumber>216</versionNumber>
+	<filename>flappy-starling</filename>
+	<name>Flappy Starling</name>
+	<description></description>
+	<!-- <copyright>????</copyright> -->
+	<initialWindow>
+		<title>Flappy Starling</title>
+		<content>flappy-starling.swf</content>
+		<systemChrome>standard</systemChrome>
+		<transparent>false</transparent>
+		<visible>true</visible>
+		<minimizable>true</minimizable>
+		<maximizable>true</maximizable>
+		<resizable>false</resizable>
+		<width>320</width>
+		<height>480</height>
+		<!-- <minSize>320 240</minSize>
+		<maxSize>1280 960</maxSize> -->
+		<renderMode>direct</renderMode>
+		
+		<autoOrients>false</autoOrients>
+		<aspectRatio>portrait</aspectRatio>
+		
+		<fullScreen>false</fullScreen>
+		<depthAndStencil>true</depthAndStencil>
+		<requestedDisplayResolution>high</requestedDisplayResolution>
+	</initialWindow>
+	<installFolder>Gamua/Flappy Starling</installFolder>
+	<programMenuFolder>Flappy Starling</programMenuFolder>
+	<icon>
+		<image16x16>_res/icon-16.png</image16x16>
+		<image29x29>_res/icon-29.png</image29x29>
+		<image32x32>_res/icon-32.png</image32x32>
+		<image36x36>_res/icon-36.png</image36x36>
+		<image40x40>_res/icon-40.png</image40x40>
+		<image48x48>_res/icon-48.png</image48x48>
+		<image50x50>_res/icon-50.png</image50x50>
+		<image57x57>_res/icon-57.png</image57x57>
+		<image58x58>_res/icon-58.png</image58x58>
+		<image60x60>_res/icon-60.png</image60x60>
+		<image72x72>_res/icon-72.png</image72x72>
+		<image75x75>_res/icon-75.png</image75x75>
+		<image76x76>_res/icon-76.png</image76x76>
+		<image80x80>_res/icon-80.png</image80x80>
+		<image87x87>_res/icon-87.png</image87x87>
+		<image96x96>_res/icon-96.png</image96x96>
+		<image100x100>_res/icon-100.png</image100x100>
+		<image114x114>_res/icon-114.png</image114x114>
+		<image120x120>_res/icon-120.png</image120x120>
+		<image128x128>_res/icon-128.png</image128x128>
+		<image144x144>_res/icon-144.png</image144x144>
+		<image152x152>_res/icon-152.png</image152x152>
+		<image167x167>_res/icon-167.png</image167x167>
+		<image180x180>_res/icon-180.png</image180x180>
+		<image192x192>_res/icon-192.png</image192x192>
+		<image512x512>_res/icon-512.png</image512x512>
+		<image1024x1024>_res/icon-1024.png</image1024x1024>
+	</icon>
+	
+	<customUpdateUI>false</customUpdateUI>
+	<allowBrowserInvocation>false</allowBrowserInvocation>
+	<!-- <fileTypes>
+		<fileType>
+			<name>adobe.VideoFile</name>
+			<extension>avf</extension>
+			<description>Adobe Video File</description>
+			<contentType>application/vnd.adobe.video-file</contentType>
+			<icon>
+				<image16x16>icons/avfIcon_16.png</image16x16>
+				<image32x32>icons/avfIcon_32.png</image32x32>
+				<image48x48>icons/avfIcon_48.png</image48x48>
+				<image128x128>icons/avfIcon_128.png</image128x128>
+			</icon>
+		</fileType>
+	</fileTypes> -->
+	<android>
+		<manifestAdditions>
+			<![CDATA[
+				<manifest>
+					<uses-permission android:name="android.permission.WAKE_LOCK" />
+					<uses-permission android:name="android.permission.INTERNET" />
+					<uses-permission android:name="android.permission.VIBRATE" />
+					<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+				</manifest>
+			]]>
+		</manifestAdditions>
+	</android>
+	<iPhone>
+		<InfoAdditions>
+			<![CDATA[
+				<key>UIDeviceFamily</key>
+				<array>
+					<string>1</string>
+					<string>2</string>
+				</array>
+			]]>
+		</InfoAdditions>
+		<requestedDisplayResolution>high</requestedDisplayResolution>
+	</iPhone>
+	<extensions>
+	</extensions>
+</application>
