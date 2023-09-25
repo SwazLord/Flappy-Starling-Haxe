@@ -28,6 +28,7 @@ class FlappyStarlingWeb extends Sprite {
 		removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 
 		stage.scaleMode = StageScaleMode.NO_BORDER;
+		stage.color = 0xd1f4f7;
 
 		start();
 	}
